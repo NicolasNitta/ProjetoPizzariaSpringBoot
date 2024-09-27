@@ -1,5 +1,7 @@
-package springteste.com.cursospring.pizza;
+package springteste.com.cursospring.model; 
 
+import springteste.com.cursospring.enumVerdadeiro.Sabor;
+import springteste.com.cursospring.enumVerdadeiro.Tamanho;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

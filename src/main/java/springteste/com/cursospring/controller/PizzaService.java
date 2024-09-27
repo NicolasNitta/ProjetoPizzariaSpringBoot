@@ -1,9 +1,12 @@
-package springteste.com.cursospring.pizza;
+package springteste.com.cursospring.controller;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
+import springteste.com.cursospring.model.Pizza;
+import springteste.com.cursospring.model.PizzaDTO;
+import springteste.com.cursospring.repository.PizzaRepository;
 
 @Service
 @RequiredArgsConstructor

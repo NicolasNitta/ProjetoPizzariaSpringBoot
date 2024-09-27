@@ -6,12 +6,16 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 import springteste.com.cursospring.model.PizzaDTO;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.GetMapping;
+
 
 
 @RestController
-@RequestMapping(name = "/pizzas")
+@RequestMapping("/pizzas")
 @RequiredArgsConstructor
 
 public class PizzaController {
@@ -22,4 +26,10 @@ public class PizzaController {
     public void cadastrar(@RequestBody PizzaDTO dto){
         pizzaService.criarPizza(dto);
     }
+
+    @GetMapping
+    public List<PizzaDTO> buscarTodos() {
+        return pizzaService.buscarTodos();
+    }
+    
 }

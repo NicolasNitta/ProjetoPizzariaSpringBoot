@@ -3,12 +3,15 @@ package springteste.com.cursospring.controller;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import springteste.com.cursospring.model.Pizza;
 import springteste.com.cursospring.model.PizzaDTO;
 import springteste.com.cursospring.repository.PizzaRepository;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import javax.swing.text.html.parser.Entity;
 
 @Service
 @RequiredArgsConstructor
@@ -28,6 +31,11 @@ public class PizzaService {
     public List<PizzaDTO> buscarTodos(){
         return pizzaRepository.findAll().stream().map(p -> modelMapper.map(p, PizzaDTO.class)).
         collect(Collectors.toList()); //o stream serve para criar uma corrente de objeto, semelhante ao foreach
+    }
+
+    public PizzaDTO buscarPorID(Long id) {
+        Pizza pizza = pizzaRepository.findById(id).orElseThrow(() -> new EntityNotFoundException());
+        return modelMapper.map(pizza, PizzaDTO.class);
     }
 
 }

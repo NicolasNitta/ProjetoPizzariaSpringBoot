@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import springteste.com.cursospring.model.Pizza;
 import springteste.com.cursospring.model.PizzaDTO;
@@ -11,13 +12,11 @@ import springteste.com.cursospring.repository.PizzaRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.swing.text.html.parser.Entity;
-
 @Service
 @RequiredArgsConstructor
 
 public class PizzaService {
-    
+
     private final PizzaRepository pizzaRepository;
 
     private final ModelMapper modelMapper;
@@ -36,6 +35,18 @@ public class PizzaService {
     public PizzaDTO buscarPorID(Long id) {
         Pizza pizza = pizzaRepository.findById(id).orElseThrow(() -> new EntityNotFoundException());
         return modelMapper.map(pizza, PizzaDTO.class);
+    }
+
+    public PizzaDTO atualizarPizza(Long id, PizzaDTO dto) {
+        Pizza pizza = modelMapper.map(dto, Pizza.class);
+        pizza.setId(id);
+        pizzaRepository.save(pizza);
+        return modelMapper.map(pizza, PizzaDTO.class);
+
+    }
+
+    public void excluir(Long id) {
+        pizzaRepository.deleteById(id);
     }
 
 }

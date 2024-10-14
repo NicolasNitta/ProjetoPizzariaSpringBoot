@@ -6,5 +6,6 @@ public enum Sabor {
     QUATROQUEIJOS,
     MARGARITA,
     CHOCOLATE,
-    MORANGO
+    MORANGO,
+    PORTUGUESA
 }

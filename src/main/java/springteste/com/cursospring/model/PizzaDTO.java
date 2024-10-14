@@ -13,7 +13,8 @@ import springteste.com.cursospring.enumVerdadeiro.Tamanho;
 @Setter
 
 public class PizzaDTO {
-
+    
+    private Long id;
     @NotBlank
     private String nome;
     @Positive

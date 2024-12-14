@@ -1,16 +1,16 @@
 package springteste.com.cursospring.controller;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import jakarta.persistence.EntityNotFoundException;
-import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
-import springteste.com.cursospring.model.Pizza;
-import springteste.com.cursospring.model.PizzaDTO;
+import springteste.com.cursospring.model.Pizza.Pizza;
+import springteste.com.cursospring.model.Pizza.PizzaDTO;
 import springteste.com.cursospring.repository.PizzaRepository;
-import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Service
 @RequiredArgsConstructor
@@ -27,9 +27,12 @@ public class PizzaService {
         return modelMapper.map(pizza, PizzaDTO.class);
     }
 
-    public List<PizzaDTO> buscarTodos(){
-        return pizzaRepository.findAll().stream().map(p -> modelMapper.map(p, PizzaDTO.class)).
-        collect(Collectors.toList()); //o stream serve para criar uma corrente de objeto, semelhante ao foreach
+    public Page<PizzaDTO> buscarTodos(Pageable paginacao){
+        return pizzaRepository
+            .findAll(paginacao)
+            .map( p -> modelMapper.map(p, PizzaDTO.class));
+        //.findAll().stream().map(p -> modelMapper.map(p, PizzaDTO.class)).
+        //collect(Collectors.toList()); //o stream serve para criar uma corrente de objeto, semelhante ao foreach
     }
 
     public PizzaDTO buscarPorID(Long id) {

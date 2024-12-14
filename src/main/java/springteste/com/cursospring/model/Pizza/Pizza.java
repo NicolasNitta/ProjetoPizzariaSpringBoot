@@ -1,4 +1,4 @@
-package springteste.com.cursospring.model; 
+package springteste.com.cursospring.model.Pizza; 
 
 import springteste.com.cursospring.enumVerdadeiro.Categoria;
 import springteste.com.cursospring.enumVerdadeiro.Sabor;

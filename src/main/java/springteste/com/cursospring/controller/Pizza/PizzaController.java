@@ -1,4 +1,4 @@
-package springteste.com.cursospring.controller;
+package springteste.com.cursospring.controller.Pizza;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

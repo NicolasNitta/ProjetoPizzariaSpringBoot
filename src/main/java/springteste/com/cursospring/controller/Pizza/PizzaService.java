@@ -1,4 +1,4 @@
-package springteste.com.cursospring.controller;
+package springteste.com.cursospring.controller.Pizza;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;

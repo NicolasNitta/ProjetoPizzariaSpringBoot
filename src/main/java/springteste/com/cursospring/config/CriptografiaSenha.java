@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @Configuration
 @RestControllerAdvice
 public class CriptografiaSenha {
-    
+
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-    public static String criptografia( String password ){
+    public static String criptografia(String password) {
         return encoder.encode(password);
     }
 }

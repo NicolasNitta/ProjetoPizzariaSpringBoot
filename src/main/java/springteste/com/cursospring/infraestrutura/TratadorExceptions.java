@@ -8,9 +8,9 @@ import jakarta.persistence.EntityNotFoundException;
 
 @RestControllerAdvice
 public class TratadorExceptions {
-    
+
     @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity tratarException404(){
+    public ResponseEntity tratarException404() {
         return ResponseEntity.notFound().build();
     }
 }
